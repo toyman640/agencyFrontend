@@ -1,3 +1,16 @@
-.home {
-  background-color: red;
+body {
+  overflow-x: hidden;
 }
+
+.SideMenu {
+  margin-top: 50%;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.MenuItem {
+  color: #000;
+  text-decoration: none;
+}
+

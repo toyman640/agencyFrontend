@@ -3,7 +3,9 @@ import {
 } from 'react-router-dom';
 import Login from './component/Login';
 import SignUp from './component/SignUp';
-import MainComp from './component/dashboard/MainComp';
+import Overview from './component/dashboard/Overview';
+import CompanyInfo from './component/dashboard/CompanyInfo';
+import './App.css';
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/dashboard" element={<MainComp />} />
+          <Route path="/dashboard" element={<Overview />} />
+          <Route path="/company-info" element={<CompanyInfo />} />
         </Routes>
       </BrowserRouter>
     </div>
