@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGaugeHigh, faRectangleList } from '@fortawesome/free-solid-svg-icons';
 import {
   Navbar,
   Nav,
@@ -7,10 +9,12 @@ import {
   Row,
   Col,
 } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Navigation = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const location = useLocation();
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -18,57 +22,48 @@ const Navigation = ({ children }) => {
 
   return (
     <div className="AllCover">
-      <Navbar bg="dark" variant="dark" expand="lg" className="mb-3">
+      <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">Navigation</Navbar.Brand>
+          <Navbar.Brand href="#" className="Logo">LOGO</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={toggleSidebar} />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto">
-              <Nav.Link href="/dashboard">Overview</Nav.Link>
-              <Nav.Link href="/company-info">Company Info</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      <Container fluid>
+      <Container fluid className="Container">
         <Row>
           {/* Sidebar - takes 30% width */}
-          <Col lg={2} className="SideBar">
+          <Col lg={2} className="d-none d-lg-block SideBar">
             <Offcanvas show={showSidebar} onHide={toggleSidebar} responsive="lg" placement="start">
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Menu</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="flex-column">
-                  <Nav.Link href="/dashboard">Overview</Nav.Link>
-                  <Nav.Link href="/company-info">Company Info</Nav.Link>
+                <Nav className="flex-column MenuItems">
+                  <Nav.Link
+                    className={`MenuItem ${location.pathname === '/dashboard' ? 'active' : ''}`}
+                    href="/dashboard"
+                  >
+                    <FontAwesomeIcon icon={faGaugeHigh} className="Icon" />
+                    Overview
+                  </Nav.Link>
+                  <Nav.Link
+                    className={`MenuItem ${location.pathname === '/company-info' ? 'active' : ''}`}
+                    href="/company-info"
+                  >
+                    <FontAwesomeIcon icon={faRectangleList} />
+                    Company Info
+                  </Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </Offcanvas>
           </Col>
 
           {/* Main Content - takes 70% width */}
-          <Col lg={10} className="main-content">
+          <Col lg={10} className="MainContent mt-3">
             {children}
           </Col>
         </Row>
       </Container>
-
-      {/* <Offcanvas show={showSidebar} onHide={toggleSidebar} responsive="lg" placement="start">
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Menu</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body className="SideBar">
-          <Nav className="flex-column">
-            <Nav.Link href="/dashboard">Overview</Nav.Link>
-            <Nav.Link href="/company-info">Company Info</Nav.Link>
-          </Nav>
-        </Offcanvas.Body>
-      </Offcanvas>
-      <Container>
-        {children}
-      </Container> */}
     </div>
   );
 };

@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 body {
   overflow-x: hidden;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.Logo {
+  font-weight: 600;
 }
 
 .AllCover {
@@ -13,13 +20,58 @@ body {
   padding-left: 0;
 }
 
-.MenuItem {
-  color: #000;
-  text-decoration: none;
+.Container {
+  min-height: 92.4vh;
 }
 
+
 .SideBar {
-  background-color: red;
-  /* border: 1px solid red; */
+  background-color: #212529;
+  min-height: 92.4vh;
 }
+
+.MenuItems {
+  margin-top: 50%;
+  width: 100%;
+}
+
+.MenuItem {
+  color: #f7f7f7 !important;
+  font-weight: 600;
+  /* border: 1px solid red !important; */
+
+}
+
+.MenuItem.active {
+  width: 105%;
+  background-color: #f7f7f7;
+  color: #000 !important;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: -20px;
+  /* border-radius: 10px; */
+
+}
+
+.Cover {
+  padding-top: 1%;
+}
+
+.CompanyBadge {
+  font-size: 1.5em;
+}
+
+.NameBadge {
+  background-color: red !important;
+}
+
+.MainContent {
+  background-color: #f7f7f7;
+}
+
+.Card {
+  border: none !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
 
