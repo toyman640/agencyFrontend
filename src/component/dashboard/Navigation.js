@@ -16,7 +16,6 @@ const Navigation = ({ children }) => {
 
   return (
     <div>
-      {/* Navbar */}
       <Navbar bg="dark" variant="dark" expand="lg" className="mb-3">
         <Container fluid>
           <Navbar.Brand href="#">Navigation</Navbar.Brand>
@@ -30,7 +29,6 @@ const Navigation = ({ children }) => {
         </Container>
       </Navbar>
 
-      {/* Offcanvas Sidebar (Hamburger Menu for small screens) */}
       <Offcanvas show={showSidebar} onHide={toggleSidebar} responsive="lg" placement="start">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Menu</Offcanvas.Title>
@@ -42,8 +40,6 @@ const Navigation = ({ children }) => {
           </Nav>
         </Offcanvas.Body>
       </Offcanvas>
-
-      {/* Main Content */}
       <Container>
         {children}
       </Container>
