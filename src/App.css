@@ -38,6 +38,7 @@ body {
 .MenuItem {
   color: #f7f7f7 !important;
   font-weight: 600;
+  margin-top: 2%;
   /* border: 1px solid red !important; */
 
 }
@@ -72,6 +73,21 @@ body {
 .Card {
   border: none !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.CardInner {
+  display: flex;
+  width: 50%;
+  margin-left: 15%;
+  justify-content: space-between;
+  font-size: 2.2em;
+  margin-top: 15%;
+  margin-bottom: 10%;
+}
+
+.CardIcon {
+  font-size: 2em;
+  color: #af1763;
 }
 
 
