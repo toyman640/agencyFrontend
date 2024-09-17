@@ -4,6 +4,8 @@ import {
   Nav,
   Container,
   Offcanvas,
+  Row,
+  Col,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -15,7 +17,7 @@ const Navigation = ({ children }) => {
   };
 
   return (
-    <div>
+    <div className="AllCover">
       <Navbar bg="dark" variant="dark" expand="lg" className="mb-3">
         <Container fluid>
           <Navbar.Brand href="#">Navigation</Navbar.Brand>
@@ -29,11 +31,35 @@ const Navigation = ({ children }) => {
         </Container>
       </Navbar>
 
-      <Offcanvas show={showSidebar} onHide={toggleSidebar} responsive="lg" placement="start">
+      <Container fluid>
+        <Row>
+          {/* Sidebar - takes 30% width */}
+          <Col lg={2} className="SideBar">
+            <Offcanvas show={showSidebar} onHide={toggleSidebar} responsive="lg" placement="start">
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title>Menu</Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className="flex-column">
+                  <Nav.Link href="/dashboard">Overview</Nav.Link>
+                  <Nav.Link href="/company-info">Company Info</Nav.Link>
+                </Nav>
+              </Offcanvas.Body>
+            </Offcanvas>
+          </Col>
+
+          {/* Main Content - takes 70% width */}
+          <Col lg={10} className="main-content">
+            {children}
+          </Col>
+        </Row>
+      </Container>
+
+      {/* <Offcanvas show={showSidebar} onHide={toggleSidebar} responsive="lg" placement="start">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
+        <Offcanvas.Body className="SideBar">
           <Nav className="flex-column">
             <Nav.Link href="/dashboard">Overview</Nav.Link>
             <Nav.Link href="/company-info">Company Info</Nav.Link>
@@ -42,7 +68,7 @@ const Navigation = ({ children }) => {
       </Offcanvas>
       <Container>
         {children}
-      </Container>
+      </Container> */}
     </div>
   );
 };
