@@ -3,10 +3,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHandshake, faListCheck, faCircleXmark, faCircleCheck,
+} from '@fortawesome/free-solid-svg-icons';
 import CountUp from 'react-countup';
 
-const FirstCompO = () => (
+const FirstCompAdminO = () => (
   <div>
     <Row>
       <Col lg={3} md={6} sm={12}>
@@ -14,13 +16,13 @@ const FirstCompO = () => (
           <Card.Body>
             <Card.Text>
               <div className="CardInner">
-                <FontAwesomeIcon className="CardIcon" icon={faScrewdriverWrench} />
+                <FontAwesomeIcon className="CardIcon" icon={faHandshake} />
                 <p>
-                  <CountUp end={86} duration={2} start={0} separator="," />
+                  <CountUp end={137} duration={2} start={0} separator="," />
                 </p>
               </div>
             </Card.Text>
-            <Card.Subtitle className="mb-2 text-muted text-center">PROJECTS COMPLETED</Card.Subtitle>
+            <Card.Subtitle className="mb-2 text-muted text-center">AGENCIES</Card.Subtitle>
           </Card.Body>
         </Card>
       </Col>
@@ -29,13 +31,13 @@ const FirstCompO = () => (
           <Card.Body>
             <Card.Text>
               <div className="CardInner">
-                <FontAwesomeIcon className="CardIcon" icon={faScrewdriverWrench} />
+                <FontAwesomeIcon className="CardIcon" icon={faListCheck} />
                 <p>
-                  <CountUp end={7} duration={2} start={0} separator="," />
+                  <CountUp end={253} duration={2} start={0} separator="," />
                 </p>
               </div>
             </Card.Text>
-            <Card.Subtitle className="mb-2 text-muted text-center">ONGOING COMPLETED</Card.Subtitle>
+            <Card.Subtitle className="mb-2 text-muted text-center">PROJECTS(ALL)</Card.Subtitle>
           </Card.Body>
         </Card>
       </Col>
@@ -44,13 +46,13 @@ const FirstCompO = () => (
           <Card.Body>
             <Card.Text>
               <div className="CardInner">
-                <FontAwesomeIcon className="CardIcon" icon={faScrewdriverWrench} />
+                <FontAwesomeIcon className="CardIcon" icon={faCircleCheck} />
                 <p>
-                  <CountUp end={7} duration={2} start={0} separator="," />
+                  <CountUp end={125} duration={2} start={0} separator="," />
                 </p>
               </div>
             </Card.Text>
-            <Card.Subtitle className="mb-2 text-muted text-center">LOCAL PROJECTS</Card.Subtitle>
+            <Card.Subtitle className="mb-2 text-muted text-center">ACTIVE AGENCIES</Card.Subtitle>
           </Card.Body>
         </Card>
       </Col>
@@ -59,13 +61,13 @@ const FirstCompO = () => (
           <Card.Body>
             <Card.Text>
               <div className="CardInner">
-                <FontAwesomeIcon className="CardIcon" icon={faScrewdriverWrench} />
+                <FontAwesomeIcon className="CardIcon" icon={faCircleXmark} />
                 <p>
-                  <CountUp end={7} duration={2} start={0} separator="," />
+                  <CountUp end={12} duration={2} start={0} separator="," />
                 </p>
               </div>
             </Card.Text>
-            <Card.Subtitle className="mb-2 text-muted text-center">FOREGIN PROJECTS</Card.Subtitle>
+            <Card.Subtitle className="mb-2 text-muted text-center">INACTIVE AGENCIES</Card.Subtitle>
           </Card.Body>
         </Card>
       </Col>
@@ -73,4 +75,4 @@ const FirstCompO = () => (
   </div>
 );
 
-export default FirstCompO;
+export default FirstCompAdminO;

@@ -53,6 +53,13 @@ const Navigation = ({ children }) => {
                     <FontAwesomeIcon icon={faRectangleList} />
                     Company Info
                   </Nav.Link>
+                  <Nav.Link
+                    className={`MenuItem ${location.pathname === '/agency-info' ? 'active' : ''}`}
+                    href="/agency-info"
+                  >
+                    <FontAwesomeIcon icon={faRectangleList} />
+                    Agencies
+                  </Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </Offcanvas>
