@@ -4,8 +4,9 @@ import {
 import Login from './component/Login';
 import SignUp from './component/SignUp';
 import Overview from './component/dashboard/Overview';
-import CompanyInfo from './component/dashboard/CompanyInfo';
+import CompanyInfoU from './component/dashboard/CompanyInfoU';
 import AgencyInfo from './component/dashboard/AgencyInfo';
+import AgencyInfoA from './component/dashboard/AgencyInfoA';
 import './App.css';
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
           <Route exact path="/" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/dashboard" element={<Overview />} />
-          <Route path="/company-info" element={<CompanyInfo />} />
+          <Route path="/company-info" element={<CompanyInfoU />} />
           <Route path="/agency-info" element={<AgencyInfo />} />
+          <Route path="/agency-details" element={<AgencyInfoA />} />
         </Routes>
       </BrowserRouter>
     </div>

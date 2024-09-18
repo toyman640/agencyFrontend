@@ -90,4 +90,27 @@ body {
   color: #af1763;
 }
 
+/* .Detail {
+  display: flex;
+} */
+
+
+.DetailTitle {
+  color: #af1763;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-right: 5%;
+}
+
+.DetailInfo {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.Underline {
+  width: 100%;
+  color: #000;
+  border: 2px solid #000;
+}
+
 
