@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { logInUser } from '../redux/user/userSlice';
@@ -60,6 +60,13 @@ const Login = () => {
           {loading ? 'Logging in...' : 'Login'}
         </Button>
       </Form>
+
+      <p>
+        New user? sign up here
+        <Link to="/sign-up-agency-account">
+          Sign up here
+        </Link>
+      </p>
 
     </div>
   );

@@ -2,7 +2,8 @@ import {
   BrowserRouter, Routes, Route,
 } from 'react-router-dom';
 import Login from './component/Login';
-import SignUp from './component/SignUp';
+import SignUpAgency from './component/SignUpAgency';
+import SignUpStaff from './component/SignUpStaff';
 import Overview from './component/dashboard/Overview';
 import CompanyInfoU from './component/dashboard/CompanyInfoU';
 import AgencyInfo from './component/dashboard/AgencyInfo';
@@ -16,7 +17,8 @@ function App() {
         {/* <Navmenu /> */}
         <Routes>
           <Route exact path="/" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-up-agency-account" element={<SignUpAgency />} />
+          <Route path="/sign-up-staff-account" element={<SignUpStaff />} />
           <Route path="/dashboard" element={<Overview />} />
           <Route path="/company-info" element={<CompanyInfoU />} />
           <Route path="/agency-info" element={<AgencyInfo />} />
