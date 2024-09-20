@@ -27,7 +27,7 @@ body {
 
 .SideBar {
   background-color: #212529;
-  min-height: 92.4vh;
+  height: 92.4vh;
 }
 
 .MenuItems {
@@ -44,7 +44,7 @@ body {
 }
 
 .MenuItem.active {
-  width: 105%;
+  width: 106%;
   background-color: #f7f7f7;
   color: #000 !important;
   border-top-left-radius: 20px;
@@ -111,6 +111,11 @@ body {
   width: 100%;
   color: #000;
   border: 2px solid #000;
+}
+
+.LogOut {
+  width: 90%;
+  margin-top: 40%;
 }
 
 

@@ -1,23 +1,39 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGaugeHigh, faRectangleList } from '@fortawesome/free-solid-svg-icons';
+import { faGaugeHigh, faRectangleList, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import {
   Navbar,
   Nav,
+  Button,
+  Modal,
   Container,
   Offcanvas,
   Row,
   Col,
 } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { logOutUser } from '../../redux/user/userSlice';
 
 const Navigation = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const location = useLocation();
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
+  };
+
+  const handleLogout = async () => {
+    await dispatch(logOutUser());
+    handleClose();
+    navigate('/'); // Redirect to the login page or any other page
   };
 
   return (
@@ -31,13 +47,12 @@ const Navigation = ({ children }) => {
 
       <Container fluid className="Container">
         <Row>
-          {/* Sidebar - takes 30% width */}
-          <Col lg={2} className="d-none d-lg-block SideBar">
+          <Col lg={2} className="d-none d-lg-flex flex-column SideBar">
             <Offcanvas show={showSidebar} onHide={toggleSidebar} responsive="lg" placement="start">
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Menu</Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body>
+              <Offcanvas.Body className="d-flex flex-column justify-content-between" style={{ height: '100%' }}>
                 <Nav className="flex-column MenuItems">
                   <Nav.Link
                     className={`MenuItem ${location.pathname === '/dashboard' ? 'active' : ''}`}
@@ -68,8 +83,26 @@ const Navigation = ({ children }) => {
                     Agency Info
                   </Nav.Link>
                 </Nav>
+                <Button className="LogOut" variant="primary" onClick={handleShow}>
+                  <FontAwesomeIcon icon={faRightFromBracket} />
+                  Log Out
+                </Button>
               </Offcanvas.Body>
             </Offcanvas>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>Are you sure you want to log out?</Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  No
+                </Button>
+                <Button variant="danger" onClick={handleLogout}>
+                  Yes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </Col>
 
           {/* Main Content - takes 70% width */}
