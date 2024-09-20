@@ -30,11 +30,7 @@ const Login = () => {
       setShowSuccessMessage(true);
       setTimeout(() => {
         setShowSuccessMessage(false);
-        if (user.is_staff) {
-          navigate('/agency-info');
-        } else {
-          navigate('/company-info');
-        }
+        navigate('/dashboard');
       }, 2000);
     }
   }, [user, navigate]);

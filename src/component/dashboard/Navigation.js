@@ -13,7 +13,7 @@ import {
 } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from '../../redux/user/userSlice';
 
 const Navigation = ({ children }) => {
@@ -21,6 +21,7 @@ const Navigation = ({ children }) => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user.user);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,7 +34,7 @@ const Navigation = ({ children }) => {
   const handleLogout = async () => {
     await dispatch(logOutUser());
     handleClose();
-    navigate('/'); // Redirect to the login page or any other page
+    navigate('/');
   };
 
   return (
@@ -61,27 +62,33 @@ const Navigation = ({ children }) => {
                     <FontAwesomeIcon icon={faGaugeHigh} className="Icon" />
                     Overview
                   </Nav.Link>
-                  <Nav.Link
-                    className={`MenuItem ${location.pathname === '/company-info' ? 'active' : ''}`}
-                    href="/company-info"
-                  >
-                    <FontAwesomeIcon icon={faRectangleList} />
-                    Company Info
-                  </Nav.Link>
-                  <Nav.Link
-                    className={`MenuItem ${location.pathname === '/agency-info' ? 'active' : ''}`}
-                    href="/agency-info"
-                  >
-                    <FontAwesomeIcon icon={faRectangleList} />
-                    Agencies
-                  </Nav.Link>
-                  <Nav.Link
-                    className={`MenuItem ${location.pathname === '/agency-details' ? 'active' : ''}`}
-                    href="/agency-details"
-                  >
-                    <FontAwesomeIcon icon={faRectangleList} />
-                    Agency Info
-                  </Nav.Link>
+                  {!user?.is_staff && (
+                    <Nav.Link
+                      className={`MenuItem ${location.pathname === '/company-info' ? 'active' : ''}`}
+                      href="/company-info"
+                    >
+                      <FontAwesomeIcon icon={faRectangleList} />
+                      Company Info
+                    </Nav.Link>
+                  )}
+                  {user && user.is_staff && (
+                    <>
+                      <Nav.Link
+                        className={`MenuItem ${location.pathname === '/agency-info' ? 'active' : ''}`}
+                        href="/agency-info"
+                      >
+                        <FontAwesomeIcon icon={faRectangleList} />
+                        Agencies
+                      </Nav.Link>
+                      <Nav.Link
+                        className={`MenuItem ${location.pathname === '/agency-details' ? 'active' : ''}`}
+                        href="/agency-details"
+                      >
+                        <FontAwesomeIcon icon={faRectangleList} />
+                        Agency Info
+                      </Nav.Link>
+                    </>
+                  )}
                 </Nav>
                 <Button className="LogOut" variant="primary" onClick={handleShow}>
                   <FontAwesomeIcon icon={faRightFromBracket} />
