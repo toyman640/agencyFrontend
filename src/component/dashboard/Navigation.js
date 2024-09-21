@@ -31,10 +31,23 @@ const Navigation = ({ children }) => {
     setShowSidebar(!showSidebar);
   };
 
+  // const handleLogout = async () => {
+  //   await dispatch(logOutUser());
+  //   handleClose();
+  //   navigate('/');
+  // };
+
   const handleLogout = async () => {
-    await dispatch(logOutUser());
-    handleClose();
-    navigate('/');
+    const token = user?.data?.token; // Fallback to localStorage if token is not in Redux state
+    console.log(token);
+    if (token) {
+      await dispatch(logOutUser(token));
+      localStorage.removeItem('userInfo');
+      handleClose();
+      navigate('/');
+    } else {
+      console.error('Token is missing');
+    }
   };
 
   return (

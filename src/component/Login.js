@@ -10,10 +10,19 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, user } = useSelector((state) => state.user);
+  const {
+    loading, user, loginStatus,
+  } = useSelector((state) => state.user);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!email || !password) {
+      setErrorMessage('Email and password are required.');
+      return;
+    }
 
     // Pass email and password as userInfo to the login action
     const userInfo = {
@@ -21,11 +30,31 @@ const Login = () => {
       password,
     };
 
-    dispatch(logInUser(userInfo));
+    setErrorMessage('');
+
+    dispatch(logInUser(userInfo)).then((action) => {
+      if (action.payload && action.payload.status !== 200) {
+        setErrorMessage('Invalid email or password.');
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 3000);
+      }
+    }).catch(() => {
+      setErrorMessage('An error occurred. Please try again.');
+
+      // Clear error message after 3 seconds
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 3000);
+    });
   };
 
+  // localStorage.clear();
+
   useEffect(() => {
-    if (user) {
+    console.log('User:', user);
+    console.log('Status:', loginStatus);
+    if (user && loginStatus && loginStatus.status === 200) {
       console.log('User logged in:', user);
       setShowSuccessMessage(true);
       setTimeout(() => {
@@ -33,13 +62,13 @@ const Login = () => {
         navigate('/dashboard');
       }, 2000);
     }
-  }, [user, navigate]);
+  }, [user, loginStatus, navigate]);
 
   return (
     <div>
       <h2>Login Page</h2>
       <Form onSubmit={handleSubmit}>
-        {error && <div style={{ color: 'red' }}>{error}</div>}
+        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         {showSuccessMessage && <div style={{ color: 'green' }}>Login successful! Redirecting...</div>}
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
