@@ -5,17 +5,71 @@ const logInUserUrl = 'http://127.0.0.1:8000/backend/login/';
 const logOutUrl = 'http://127.0.0.1:8000/backend/logout/';
 const createAgentUser = 'http://127.0.0.1:8000/backend/register/';
 const createStaffUser = 'http://127.0.0.1:8000/backend/register/staff/';
+const getNonStaffUserUrl = 'http://127.0.0.1:8000/backend/non-staff-users/';
+const activateUserUrl = (userId) => `http://127.0.0.1:8000/backend/activate/${userId}/`;
+const deactivateUserUrl = (userId) => `http://127.0.0.1:8000/backend/deactivate/${userId}/`;
+// const activateUserUrl = 'http://127.0.0.1:8000/backend/activate/<int:user_id>/';
+// const deactivateUserUrl = 'http://127.0.0.1:8000/backend/deactivate/<int:user_id>/';
 
 const persistedUserInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
 
 const initialState = {
   user: persistedUserInfo,
+  nonStaffUser: null,
   loading: false,
   agentUser: null,
   loginStatus: null,
   staffUser: null,
   error: null,
 };
+
+export const activateUser = createAsyncThunk('user/activateUser', async (userId, { rejectWithValue }) => {
+  const persistedUserInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
+  const token = persistedUserInfo?.data?.token;
+
+  try {
+    const response = await axios.post(activateUserUrl(userId), {}, {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    return rejectWithValue(err.response?.data?.error || err.message);
+  }
+});
+
+export const deactivateUser = createAsyncThunk('user/deactivateUser', async (userId, { rejectWithValue }) => {
+  const persistedUserInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
+  const token = persistedUserInfo?.data?.token;
+
+  try {
+    const response = await axios.post(deactivateUserUrl(userId), {}, {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    return rejectWithValue(err.response?.data?.error || err.message);
+  }
+});
+
+export const getNonStaffUser = createAsyncThunk('user/getNonStaffUser', async (_, { rejectWithValue }) => {
+  const persistedUserInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
+  const token = persistedUserInfo?.data?.token;
+  console.log(token);
+  try {
+    const response = await axios.get(getNonStaffUserUrl, {
+      headers: {
+        Authorization: `Token ${token}`, // Pass the token in the header
+      },
+    });
+    return response.data;
+  } catch (err) {
+    return rejectWithValue(err.response?.data?.error || err.message);
+  }
+});
 
 export const signUpAgent = createAsyncThunk('user/signUpAgent', async (newAgent) => {
   try {
@@ -126,6 +180,22 @@ const userSlice = createSlice({
         error: null,
       }))
       .addCase(signUpStaff.rejected, (state, action) => ({
+        ...state,
+        loading: false,
+        error: action.payload,
+      }))
+      .addCase(getNonStaffUser.pending, (state) => ({
+        ...state,
+        loading: true,
+        error: null,
+      }))
+      .addCase(getNonStaffUser.fulfilled, (state, action) => ({
+        ...state,
+        nonStaffUser: action.payload,
+        loading: false,
+        error: null,
+      }))
+      .addCase(getNonStaffUser.rejected, (state, action) => ({
         ...state,
         loading: false,
         error: action.payload,

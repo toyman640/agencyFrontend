@@ -22,6 +22,7 @@ const Navigation = ({ children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
+  console.log(user);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -75,7 +76,7 @@ const Navigation = ({ children }) => {
                     <FontAwesomeIcon icon={faGaugeHigh} className="Icon" />
                     Overview
                   </Nav.Link>
-                  {!user?.is_staff && (
+                  {!user?.data?.is_staff && (
                     <Nav.Link
                       className={`MenuItem ${location.pathname === '/company-info' ? 'active' : ''}`}
                       href="/company-info"
@@ -84,7 +85,7 @@ const Navigation = ({ children }) => {
                       Company Info
                     </Nav.Link>
                   )}
-                  {user && user.is_staff && (
+                  {user?.data?.is_staff && (
                     <>
                       <Nav.Link
                         className={`MenuItem ${location.pathname === '/agency-info' ? 'active' : ''}`}
@@ -99,6 +100,13 @@ const Navigation = ({ children }) => {
                       >
                         <FontAwesomeIcon icon={faRectangleList} />
                         Agency Info
+                      </Nav.Link>
+                      <Nav.Link
+                        className={`MenuItem ${location.pathname === '/agency-accounts' ? 'active' : ''}`}
+                        href="/agency-accounts"
+                      >
+                        <FontAwesomeIcon icon={faRectangleList} />
+                        Agency Accounts
                       </Nav.Link>
                     </>
                   )}
