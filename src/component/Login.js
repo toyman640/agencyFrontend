@@ -11,18 +11,18 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
-    loading, user, loginStatus,
+    loading, user, loginStatus, error,
   } = useSelector((state) => state.user);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  // const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      setErrorMessage('Email and password are required.');
-      return;
-    }
+    // if (!email || !password) {
+    //   setErrorMessage('Email and password are required.');
+    //   return;
+    // }
 
     // Pass email and password as userInfo to the login action
     const userInfo = {
@@ -30,29 +30,31 @@ const Login = () => {
       password,
     };
 
-    setErrorMessage('');
+    // setErrorMessage('');
 
-    dispatch(logInUser(userInfo)).then((action) => {
-      if (action.payload && action.payload.status !== 200) {
-        setErrorMessage('Invalid email or password.');
-        setTimeout(() => {
-          setErrorMessage('');
-        }, 3000);
-      }
-    }).catch(() => {
-      setErrorMessage('An error occurred. Please try again.');
+    dispatch(logInUser(userInfo));
 
-      // Clear error message after 3 seconds
-      setTimeout(() => {
-        setErrorMessage('');
-      }, 3000);
-    });
+    // dispatch(logInUser(userInfo)).then((action) => {
+    //   if (action.payload && action.payload.status !== 200) {
+    //     setErrorMessage('Invalid email or password.');
+    //     setTimeout(() => {
+    //       setErrorMessage('');
+    //     }, 3000);
+    //   }
+    // }).catch(() => {
+    //   setErrorMessage('An error occurred. Please try again.');
+
+    //   // Clear error message after 3 seconds
+    //   setTimeout(() => {
+    //     setErrorMessage('');
+    //   }, 3000);
+    // });
   };
 
   // localStorage.clear();
 
   useEffect(() => {
-    console.log('User:', user);
+    console.log('Error:', error);
     console.log('Status:', loginStatus);
     if (user && loginStatus && loginStatus.status === 200) {
       console.log('User logged in:', user);
@@ -62,13 +64,17 @@ const Login = () => {
         navigate('/dashboard');
       }, 2000);
     }
-  }, [user, loginStatus, navigate]);
+    if (error) {
+      console.log('Login Error:', error);
+    }
+  }, [user, loginStatus, error, navigate]);
 
   return (
     <div>
       <h2>Login Page</h2>
       <Form onSubmit={handleSubmit}>
-        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+        {error && <div style={{ color: 'red' }}>{error}</div>}
+        {/* {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>} */}
         {showSuccessMessage && <div style={{ color: 'green' }}>Login successful! Redirecting...</div>}
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>

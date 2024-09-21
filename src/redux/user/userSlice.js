@@ -35,31 +35,20 @@ export const signUpStaff = createAsyncThunk('user/signUpStaff', async (newStaff)
   }
 });
 
-export const logInUser = createAsyncThunk('user/logInUser', async (userInfo) => {
+export const logInUser = createAsyncThunk('user/logInUser', async (userInfo, { rejectWithValue }) => {
   try {
     const response = await axios.post(logInUserUrl, userInfo);
+    if (response.status < 200 || response.status >= 300) {
+      return rejectWithValue(response.data.error || 'Login failed'); // Use error message from the response if available
+    }
     return { data: response.data, status: response.status };
   } catch (err) {
-    return err.message;
+    if (err.response && err.response.data) {
+      return rejectWithValue(err.response.data.error || err.message);
+    }
+    return rejectWithValue(err.message);
   }
 });
-
-// localStorage.clear();
-
-// export const logOutUser = createAsyncThunk('user/logOutUser', async (_, { getState }) => {
-//   const { user: { user: { token } } } = getState();
-//   try {
-//     await axios.post(logOutUrl, {}, {
-//       headers: {
-//         Authorization: `Token ${token}`,
-//       },
-//     });
-//     localStorage.removeItem('userInfo');
-//     return null;
-//   } catch (err) {
-//     return err.message;
-//   }
-// });
 
 export const logOutUser = createAsyncThunk('user/logOutUser', async (token) => {
   try {
