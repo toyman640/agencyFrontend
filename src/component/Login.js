@@ -19,45 +19,15 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (!email || !password) {
-    //   setErrorMessage('Email and password are required.');
-    //   return;
-    // }
-
-    // Pass email and password as userInfo to the login action
     const userInfo = {
       email,
       password,
     };
-
-    // setErrorMessage('');
-
     dispatch(logInUser(userInfo));
-
-    // dispatch(logInUser(userInfo)).then((action) => {
-    //   if (action.payload && action.payload.status !== 200) {
-    //     setErrorMessage('Invalid email or password.');
-    //     setTimeout(() => {
-    //       setErrorMessage('');
-    //     }, 3000);
-    //   }
-    // }).catch(() => {
-    //   setErrorMessage('An error occurred. Please try again.');
-
-    //   // Clear error message after 3 seconds
-    //   setTimeout(() => {
-    //     setErrorMessage('');
-    //   }, 3000);
-    // });
   };
 
-  // localStorage.clear();
-
   useEffect(() => {
-    console.log('Error:', error);
-    console.log('Status:', loginStatus);
     if (user && loginStatus && loginStatus.status === 200) {
-      console.log('User logged in:', user);
       setShowSuccessMessage(true);
       setTimeout(() => {
         setShowSuccessMessage(false);

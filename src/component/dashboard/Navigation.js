@@ -22,7 +22,6 @@ const Navigation = ({ children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
-  console.log(user);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -32,15 +31,8 @@ const Navigation = ({ children }) => {
     setShowSidebar(!showSidebar);
   };
 
-  // const handleLogout = async () => {
-  //   await dispatch(logOutUser());
-  //   handleClose();
-  //   navigate('/');
-  // };
-
   const handleLogout = async () => {
-    const token = user?.data?.token; // Fallback to localStorage if token is not in Redux state
-    console.log(token);
+    const token = user?.data?.token;
     if (token) {
       await dispatch(logOutUser(token));
       localStorage.removeItem('userInfo');

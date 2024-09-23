@@ -58,7 +58,6 @@ export const deactivateUser = createAsyncThunk('user/deactivateUser', async (use
 export const getNonStaffUser = createAsyncThunk('user/getNonStaffUser', async (_, { rejectWithValue }) => {
   const persistedUserInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
   const token = persistedUserInfo?.data?.token;
-  console.log(token);
   try {
     const response = await axios.get(getNonStaffUserUrl, {
       headers: {
@@ -93,7 +92,7 @@ export const logInUser = createAsyncThunk('user/logInUser', async (userInfo, { r
   try {
     const response = await axios.post(logInUserUrl, userInfo);
     if (response.status < 200 || response.status >= 300) {
-      return rejectWithValue(response.data.error || 'Login failed'); // Use error message from the response if available
+      return rejectWithValue(response.data.error || 'Login failed');
     }
     return { data: response.data, status: response.status };
   } catch (err) {

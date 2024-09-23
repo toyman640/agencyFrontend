@@ -9,6 +9,7 @@ import CompanyInfoU from './component/dashboard/CompanyInfoU';
 import AgencyInfo from './component/dashboard/AgencyInfo';
 import AgencyInfoA from './component/dashboard/AgencyInfoA';
 import NonStaffUser from './component/dashboard/NonStaffUsers';
+import NewAgency from './component/dashboard/NewAgency';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/agency-info" element={<AgencyInfo />} />
           <Route path="/agency-details" element={<AgencyInfoA />} />
           <Route path="/agency-accounts" element={<NonStaffUser />} />
+          <Route path="/create-agency" element={<NewAgency />} />
         </Routes>
       </BrowserRouter>
     </div>
