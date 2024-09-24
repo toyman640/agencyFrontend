@@ -15,12 +15,12 @@ const FirstCompAdminO = () => (
         <Card className="Card">
           <Card.Body>
             <Card.Text>
-              <div className="CardInner">
+              <span className="CardInner">
                 <FontAwesomeIcon className="CardIcon" icon={faHandshake} />
-                <p>
+                <span>
                   <CountUp end={137} duration={2} start={0} separator="," />
-                </p>
-              </div>
+                </span>
+              </span>
             </Card.Text>
             <Card.Subtitle className="mb-2 text-muted text-center">AGENCIES</Card.Subtitle>
           </Card.Body>
@@ -30,12 +30,12 @@ const FirstCompAdminO = () => (
         <Card className="Card">
           <Card.Body>
             <Card.Text>
-              <div className="CardInner">
+              <span className="CardInner">
                 <FontAwesomeIcon className="CardIcon" icon={faListCheck} />
-                <p>
+                <span>
                   <CountUp end={253} duration={2} start={0} separator="," />
-                </p>
-              </div>
+                </span>
+              </span>
             </Card.Text>
             <Card.Subtitle className="mb-2 text-muted text-center">PROJECTS(ALL)</Card.Subtitle>
           </Card.Body>
@@ -45,12 +45,12 @@ const FirstCompAdminO = () => (
         <Card className="Card">
           <Card.Body>
             <Card.Text>
-              <div className="CardInner">
+              <span className="CardInner">
                 <FontAwesomeIcon className="CardIcon" icon={faCircleCheck} />
-                <p>
+                <span>
                   <CountUp end={125} duration={2} start={0} separator="," />
-                </p>
-              </div>
+                </span>
+              </span>
             </Card.Text>
             <Card.Subtitle className="mb-2 text-muted text-center">ACTIVE AGENCIES</Card.Subtitle>
           </Card.Body>
@@ -60,12 +60,12 @@ const FirstCompAdminO = () => (
         <Card className="Card">
           <Card.Body>
             <Card.Text>
-              <div className="CardInner">
+              <span className="CardInner">
                 <FontAwesomeIcon className="CardIcon" icon={faCircleXmark} />
-                <p>
+                <span>
                   <CountUp end={12} duration={2} start={0} separator="," />
-                </p>
-              </div>
+                </span>
+              </span>
             </Card.Text>
             <Card.Subtitle className="mb-2 text-muted text-center">INACTIVE AGENCIES</Card.Subtitle>
           </Card.Body>

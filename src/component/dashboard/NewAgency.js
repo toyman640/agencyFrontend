@@ -46,7 +46,7 @@ const NewAgency = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Company Mail</Form.Label>
-            <Form.Control type="text" placeholder="xyz@mail.com" value={newData.email} onChange={handleInputChange} required />
+            <Form.Control type="email" placeholder="xyz@mail.com" name="email" value={newData.email} onChange={handleInputChange} required />
           </Form.Group>
           <Button variant="primary" type="submit">
             Create Agency
