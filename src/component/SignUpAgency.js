@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { signUpAgent } from '../redux/user/userSlice';
 
 const SignUpAgency = () => {
@@ -47,7 +47,7 @@ const SignUpAgency = () => {
   }, [signUpSuccess, navigate]);
 
   return (
-    <div>
+    <div className="mt-5">
       <h2 className="text-center">SignUp Page</h2>
       <Row className="justify-content-center">
         <Col lg={{ span: 8, offset: 1 }} md={{ span: 10, offset: 1 }} sm={{ span: 10, offset: 1 }}>
@@ -77,6 +77,12 @@ const SignUpAgency = () => {
               {loading ? 'Registering...' : 'Register'}
             </Button>
           </Form>
+          <p>
+            Have? sign up here
+            <Link to="/">
+              Log in up here
+            </Link>
+          </p>
         </Col>
       </Row>
     </div>

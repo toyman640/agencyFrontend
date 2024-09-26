@@ -39,7 +39,6 @@ body {
   color: #f7f7f7 !important;
   font-weight: 600;
   margin-top: 2%;
-  /* border: 1px solid red !important; */
 
 }
 
@@ -50,7 +49,6 @@ body {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: -20px;
-  /* border-radius: 10px; */
 
 }
 
@@ -90,10 +88,6 @@ body {
   color: #af1763;
 }
 
-/* .Detail {
-  display: flex;
-} */
-
 
 .DetailTitle {
   color: #af1763;
@@ -121,7 +115,6 @@ body {
 .Testing {
   border: 1px solid red !important;
   color: green !important;
-  /* margin-left: 50% !important; */
 }
 
 .NoAgency {
@@ -151,7 +144,25 @@ body {
 
   .LogOut {
     margin-top: 150%;
-  } 
+  }
+
+  .MenuItem {
+    color: #f7f7f7 !important;
+    font-weight: 600;
+    margin-top: 2%;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .MenuItem.active {
+    width: 106%;
+    background-color: #f7f7f7;
+    color: #000 !important;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: -20px;
+  
+  }
 
 }
 

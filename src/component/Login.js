@@ -39,7 +39,7 @@ const Login = () => {
   }, [user, loginStatus, error, navigate]);
 
   return (
-    <div>
+    <div className="col-lg-6 offset-lg-3 mt-5">
       <h2>Login Page</h2>
       <Form onSubmit={handleSubmit}>
         {error && <div style={{ color: 'red' }}>{error}</div>}
