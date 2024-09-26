@@ -134,3 +134,33 @@ body {
 }
 
 
+@media only screen and (min-width: 1200px) {
+  .TopNav {
+    width: 80%;
+    margin-left: 18%;
+    margin-top: 1%;
+    border-radius: 8px;
+  }
+
+  .SideBar {
+    background-color: #212529;
+    height: 99vh;
+    margin-top: -4% !important;
+    border-radius: 8px;
+  }
+
+  .LogOut {
+    margin-top: 150%;
+  } 
+
+}
+
+@media only screen and (min-width: 1440px) {
+
+  .LogOut {
+    margin-top: 190%;
+  } 
+
+}
+
+

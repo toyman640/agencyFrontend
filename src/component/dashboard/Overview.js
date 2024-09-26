@@ -23,7 +23,6 @@ const Overview = () => {
   return (
     <Navigation>
       <div className="Cover">
-        <p className="CompanyBadge"><Badge className="NameBadge" bg="secondary">SHORELINE INDUSTIRES</Badge></p>
         {user?.data?.is_staff ? (
           <div>
             <FirstCompAdminO />
@@ -42,18 +41,9 @@ const Overview = () => {
                   </div>
                 ) : (
                   <div className="mt-5">
-                    <p>
-                      {userAgencyInfo.agency_name}
-                      1
-                    </p>
-                    <p>
-                      User ID:
-                      {' '}
-                      {user?.data?.id}
-                    </p>
-                    <FirstCompAgencyO />
                     <div>
-                      <p className="Testing">1234567</p>
+                      <p className="CompanyBadge"><Badge className="NameBadge" bg="secondary">{userAgencyInfo.agency_name}</Badge></p>
+                      <FirstCompAgencyO />
                     </div>
                   </div>
                 )}

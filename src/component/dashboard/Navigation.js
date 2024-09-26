@@ -45,7 +45,7 @@ const Navigation = ({ children }) => {
 
   return (
     <div className="AllCover">
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar bg="dark" variant="dark" expand="lg" className="TopNav">
         <Container fluid>
           <Navbar.Brand href="#" className="Logo">LOGO</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={toggleSidebar} />
@@ -56,10 +56,10 @@ const Navigation = ({ children }) => {
         <Row>
           <Col lg={2} className="d-none d-lg-flex flex-column SideBar">
             <Offcanvas show={showSidebar} onHide={toggleSidebar} responsive="lg" placement="start">
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Menu</Offcanvas.Title>
+              <Offcanvas.Header className="bg-dark text-white" closeButton>
+                <Offcanvas.Title className="text-white">LOGO</Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body className="d-flex flex-column justify-content-between" style={{ height: '100%' }}>
+              <Offcanvas.Body className="d-flex flex-column justify-content-between bg-dark" style={{ height: '100%' }}>
                 <Nav className="flex-column MenuItems">
                   <Nav.Link
                     className={`MenuItem ${location.pathname === '/dashboard' ? 'active' : ''}`}
