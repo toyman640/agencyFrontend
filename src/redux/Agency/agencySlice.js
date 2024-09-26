@@ -12,7 +12,6 @@ const initialState = {
   error: null,
 };
 
-// Create new agency thunk
 export const newAgency = createAsyncThunk(
   'userAgency/newAgency',
   async (newData, { rejectWithValue }) => {
@@ -64,7 +63,6 @@ export const getAgency = createAsyncThunk(
           Authorization: `Token ${token}`,
         },
       });
-      console.log(response.data);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.error || err.message);
@@ -97,7 +95,7 @@ const userAgencySlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(newAgency.pending, (state) => {
-        state.loading = true; // Set loading state
+        state.loading = true;
         state.error = null;
       })
       .addCase(newAgency.fulfilled, (state, action) => {
@@ -134,17 +132,16 @@ const userAgencySlice = createSlice({
         state.error = action.payload;
       })
       .addCase(editAgency.pending, (state) => {
-        state.loading = true; // Set loading state for editing
-        state.error = null; // Reset error
+        state.loading = true;
+        state.error = null;
       })
       .addCase(editAgency.fulfilled, (state, action) => {
-        // Assuming the response contains the updated agency data
-        state.userAgency = action.payload; // Update the current agency with the response
-        state.loading = false; // Stop loading
+        state.userAgency = action.payload;
+        state.loading = false;
       })
       .addCase(editAgency.rejected, (state, action) => {
-        state.loading = false; // Stop loading
-        state.error = action.payload; // Set the error message
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });

@@ -14,7 +14,6 @@ const Login = () => {
     loading, user, loginStatus, error,
   } = useSelector((state) => state.user);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,7 +43,6 @@ const Login = () => {
       <h2>Login Page</h2>
       <Form onSubmit={handleSubmit}>
         {error && <div style={{ color: 'red' }}>{error}</div>}
-        {/* {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>} */}
         {showSuccessMessage && <div style={{ color: 'green' }}>Login successful! Redirecting...</div>}
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>

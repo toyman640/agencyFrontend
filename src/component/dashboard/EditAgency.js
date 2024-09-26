@@ -49,8 +49,8 @@ const EditAgency = () => {
     if (editAgency.fulfilled.match(resultAction)) {
       setSuccessMessage('Agency updated successfully!');
       setTimeout(() => {
-        navigate('/agency-info'); // Navigate to /agency-info after a brief delay
-      }, 2000); // 2 seconds delay for the message to be visible
+        navigate('/agency-info');
+      }, 2000);
     }
   };
 

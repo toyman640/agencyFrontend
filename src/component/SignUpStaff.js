@@ -19,7 +19,6 @@ const SignUpStaff = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Validate password
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
       return;
@@ -31,7 +30,6 @@ const SignUpStaff = () => {
       password,
     };
 
-    // Dispatch the sign-up action
     dispatch(signUpStaff(newStaff));
   };
 
@@ -40,8 +38,8 @@ const SignUpStaff = () => {
       setShowSuccessMessage(true);
       setTimeout(() => {
         setShowSuccessMessage(false);
-        navigate('/'); // Redirect to login page
-      }, 2000); // 2 seconds delay
+        navigate('/');
+      }, 2000);
     }
   }, [signUpSuccess, navigate]);
 

@@ -8,8 +8,6 @@ const createStaffUser = 'http://127.0.0.1:8000/backend/register/staff/';
 const getNonStaffUserUrl = 'http://127.0.0.1:8000/backend/non-staff-users/';
 const activateUserUrl = (userId) => `http://127.0.0.1:8000/backend/activate/${userId}/`;
 const deactivateUserUrl = (userId) => `http://127.0.0.1:8000/backend/deactivate/${userId}/`;
-// const activateUserUrl = 'http://127.0.0.1:8000/backend/activate/<int:user_id>/';
-// const deactivateUserUrl = 'http://127.0.0.1:8000/backend/deactivate/<int:user_id>/';
 
 const persistedUserInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
 
@@ -61,7 +59,7 @@ export const getNonStaffUser = createAsyncThunk('user/getNonStaffUser', async (_
   try {
     const response = await axios.get(getNonStaffUserUrl, {
       headers: {
-        Authorization: `Token ${token}`, // Pass the token in the header
+        Authorization: `Token ${token}`,
       },
     });
     return response.data;

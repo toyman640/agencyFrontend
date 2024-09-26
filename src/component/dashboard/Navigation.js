@@ -124,8 +124,6 @@ const Navigation = ({ children }) => {
               </Modal.Footer>
             </Modal>
           </Col>
-
-          {/* Main Content - takes 70% width */}
           <Col lg={10} className="MainContent mt-3">
             {children}
           </Col>

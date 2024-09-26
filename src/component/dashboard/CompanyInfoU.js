@@ -9,7 +9,6 @@ const CompanyInfoU = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const agencyDetails = useSelector((state) => state.agency.userAgency);
-  console.log(agencyDetails);
   const loading = useSelector((state) => state.agency.loading);
   const error = useSelector((state) => state.agency.error);
 

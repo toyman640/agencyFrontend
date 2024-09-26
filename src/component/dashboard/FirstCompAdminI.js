@@ -9,12 +9,10 @@ import { getAgency } from '../../redux/Agency/agencySlice';
 const FirstCompAdminI = () => {
   const dispatch = useDispatch();
   const agencies = useSelector((state) => state.agency.userAgencies);
-  console.log(agencies);
   const loading = useSelector((state) => state.agency.loading);
   const error = useSelector((state) => state.agency.error);
 
   useEffect(() => {
-    console.log('i ran');
     dispatch(getAgency());
   }, [dispatch]);
 
