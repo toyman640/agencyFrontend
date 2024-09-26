@@ -34,11 +34,13 @@ export const newAgency = createAsyncThunk(
 export const editAgency = createAsyncThunk(
   'agency/edit',
   async ({ agencyId, updatedData }, { rejectWithValue }) => {
+    const persistedUserInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
+    const token = persistedUserInfo?.data?.token;
     try {
       const response = await axios.put(editAgencyUrl(agencyId), updatedData, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Token ${token}`,
         },
       });
       return response.data;
@@ -130,6 +132,19 @@ const userAgencySlice = createSlice({
       .addCase(getOneAgencyById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(editAgency.pending, (state) => {
+        state.loading = true; // Set loading state for editing
+        state.error = null; // Reset error
+      })
+      .addCase(editAgency.fulfilled, (state, action) => {
+        // Assuming the response contains the updated agency data
+        state.userAgency = action.payload; // Update the current agency with the response
+        state.loading = false; // Stop loading
+      })
+      .addCase(editAgency.rejected, (state, action) => {
+        state.loading = false; // Stop loading
+        state.error = action.payload; // Set the error message
       });
   },
 });
