@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+  overflow-x: hidden;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.Logo {
+  font-weight: 600;
+}
+
+.AllCover {
+  min-height: 100vh;
+}
+
+.SideMenu {
+  margin-top: 50%;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.Container {
+  min-height: 92.4vh;
+}
+
+.SideBar {
+  background-color: #212529;
+  height: 92.4vh;
+}
+
+.MenuItems {
+  margin-top: 50%;
+  width: 100%;
+}
+
+.MenuItem {
+  color: #f7f7f7 !important;
+  font-weight: 600;
+  margin-top: 2%;
+}
+
+.MenuItem.active {
+  width: 106%;
+  background-color: #f7f7f7;
+  color: #000 !important;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: -20px;
+}
+
+.Cover {
+  padding-top: 1%;
+}
+
+.CompanyBadge {
+  font-size: 1.5em;
+}
+
+.NameBadge {
+  background-color: red !important;
+}
+
+.MainContent {
+  background-color: #f7f7f7;
+}
+
+.Card {
+  border: none !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.CardInner {
+  display: flex;
+  width: 50%;
+  margin-left: 15%;
+  justify-content: space-between;
+  font-size: 2.2em;
+  margin-top: 15%;
+  margin-bottom: 10%;
+}
+
+.CardIcon {
+  font-size: 2em;
+  color: #af1763;
+}
+
+.DetailTitle {
+  color: #af1763;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-right: 5%;
+}
+
+.DetailInfo {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.Underline {
+  width: 100%;
+  color: #000;
+  border: 2px solid #000;
+}
+
+.LogOut {
+  width: 90%;
+  margin-top: 40%;
+}
+
+.Testing {
+  border: 1px solid red !important;
+  color: green !important;
+}
+
+.NoAgency {
+  border: 1px solid red !important;
+}
+
+.ActionButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media only screen and (min-width: 1200px) {
+  .TopNav {
+    width: 80%;
+    margin-left: 18%;
+    margin-top: 1%;
+    border-radius: 8px;
+  }
+
+  .SideBar {
+    background-color: #212529;
+    height: 99vh;
+    margin-top: -4% !important;
+    border-radius: 8px;
+  }
+
+  .LogOut {
+    margin-top: 150%;
+  }
+
+  .MenuItem {
+    color: #f7f7f7 !important;
+    font-weight: 600;
+    margin-top: 2%;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .MenuItem.active {
+    width: 106%;
+    background-color: #f7f7f7;
+    color: #000 !important;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: -20px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .LogOut {
+    margin-top: 190%;
+  }
+}
