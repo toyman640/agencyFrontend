@@ -41,7 +41,6 @@ const FirstCompAdminI = () => {
                 <td>{agency.agency_name}</td>
                 <td>
                   3
-                  {agency.created_by.name}
                 </td>
                 <td>22-02-2004</td>
                 <td>
@@ -51,7 +50,11 @@ const FirstCompAdminI = () => {
                 </td>
                 <td colSpan={2}>
                   <div className="ActionButtons">
-                    <Button variant="info" size="sm">Details</Button>
+                    <Link to={`/agency-details/${agency.id}`}>
+                      <Button variant="info" size="sm">
+                        Details
+                      </Button>
+                    </Link>
                     <Link to={`/update-agency-details/${agency.id}`}>
                       <Button variant="warning" size="sm">
                         Edit

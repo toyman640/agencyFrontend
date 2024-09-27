@@ -25,7 +25,7 @@ function App() {
           <Route path="/dashboard" element={<Overview />} />
           <Route path="/company-info" element={<CompanyInfoU />} />
           <Route path="/agency-info" element={<AgencyInfo />} />
-          <Route path="/agency-details" element={<AgencyInfoA />} />
+          <Route path="/agency-details/:agencyId" element={<AgencyInfoA />} />
           <Route path="/agency-accounts" element={<NonStaffUser />} />
           <Route path="/create-agency" element={<NewAgency />} />
           <Route path="/update-agency-details/:agencyId" element={<EditAgency />} />

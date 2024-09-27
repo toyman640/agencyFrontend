@@ -87,13 +87,6 @@ const Navigation = ({ children }) => {
                         Agencies
                       </Nav.Link>
                       <Nav.Link
-                        className={`MenuItem ${location.pathname === '/agency-details' ? 'active' : ''}`}
-                        href="/agency-details"
-                      >
-                        <FontAwesomeIcon icon={faRectangleList} />
-                        Agency Info
-                      </Nav.Link>
-                      <Nav.Link
                         className={`MenuItem ${location.pathname === '/agency-accounts' ? 'active' : ''}`}
                         href="/agency-accounts"
                       >

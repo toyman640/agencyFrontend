@@ -45,7 +45,7 @@ const SignUpStaff = () => {
 
   return (
     <div>
-      <h2 className="text-center">SignUp Page</h2>
+      <h2 className="text-center">SignUp Page Staff</h2>
       <Row className="justify-content-center">
         <Col lg={{ span: 8, offset: 1 }} md={{ span: 10, offset: 1 }} sm={{ span: 10, offset: 1 }}>
           <Form onSubmit={handleSubmit}>

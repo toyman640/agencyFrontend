@@ -4,10 +4,14 @@ import axios from 'axios';
 const createAgencyUrl = 'http://127.0.0.1:8000/backend/agency/';
 const editAgencyUrl = (agencyId) => `http://127.0.0.1:8000/backend/agency/edit/${agencyId}/`;
 const getOneAgencyUrl = (agencyId) => `http://127.0.0.1:8000/backend/agency/${agencyId}/`;
+const getAllAgencyUrl = 'http://127.0.0.1:8000/backend/users/non-staff/';
 
 const initialState = {
   userAgency: null,
   userAgencies: [],
+  allAgencies: 0,
+  activeAgencies: 0,
+  inactiveAgencies: 0,
   loading: false,
   error: null,
 };
@@ -88,6 +92,45 @@ export const getOneAgencyById = createAsyncThunk(
   },
 );
 
+// export const fetcAgencies = createAsyncThunk(
+//   'agency/fetcAgencies',
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const response = await axios.get('/users/non-staff/');
+//       return response.data;
+//     } catch (error) {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
+
+export const fetchAgencies = createAsyncThunk(
+  'agencies/fetchAgencies',
+  async (_, { rejectWithValue }) => {
+    const persistedUserInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
+    const token = persistedUserInfo?.data?.token;
+    try {
+      const response = await axios.get(getAllAgencyUrl, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      const agencies = response.data;
+
+      const activeAgencies = agencies.filter((agency) => agency.is_active);
+      const inactiveAgencies = agencies.filter((agency) => !agency.is_active);
+
+      return {
+        allAgencies: agencies.length,
+        activeAgencies: activeAgencies.length,
+        inactiveAgencies: inactiveAgencies.length,
+      };
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
 const userAgencySlice = createSlice({
   name: 'userAgency',
   initialState,
@@ -142,6 +185,20 @@ const userAgencySlice = createSlice({
       .addCase(editAgency.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(fetchAgencies.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAgencies.fulfilled, (state, action) => {
+        state.loading = false;
+        state.allAgencies = action.payload.allAgencies;
+        state.activeAgencies = action.payload.activeAgencies;
+        state.inactiveAgencies = action.payload.inactiveAgencies;
+      })
+      .addCase(fetchAgencies.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || 'Failed to fetch non-staff users';
       });
   },
 });
