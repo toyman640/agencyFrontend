@@ -15,7 +15,6 @@ const NonStaffUser = () => {
   }, [dispatch]);
 
   const handleActivate = (userId) => {
-    console.log(userId);
     dispatch(activateUser(userId)).then(() => {
       dispatch(getNonStaffUser());
     });

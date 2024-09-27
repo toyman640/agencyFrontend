@@ -24,7 +24,6 @@ body {
   min-height: 92.4vh;
 }
 
-
 .SideBar {
   background-color: #212529;
   height: 92.4vh;
@@ -39,7 +38,6 @@ body {
   color: #f7f7f7 !important;
   font-weight: 600;
   margin-top: 2%;
-
 }
 
 .MenuItem.active {
@@ -49,7 +47,6 @@ body {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: -20px;
-
 }
 
 .Cover {
@@ -88,7 +85,6 @@ body {
   color: #af1763;
 }
 
-
 .DetailTitle {
   color: #af1763;
   font-size: 1.5em;
@@ -126,7 +122,6 @@ body {
   justify-content: space-around;
 }
 
-
 @media only screen and (min-width: 1200px) {
   .TopNav {
     width: 80%;
@@ -153,7 +148,7 @@ body {
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
   }
-  
+
   .MenuItem.active {
     width: 106%;
     background-color: #f7f7f7;
@@ -161,17 +156,11 @@ body {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: -20px;
-  
   }
-
 }
 
 @media only screen and (min-width: 1440px) {
-
   .LogOut {
     margin-top: 190%;
-  } 
-
+  }
 }
-
-
