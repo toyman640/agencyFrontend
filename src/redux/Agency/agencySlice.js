@@ -92,18 +92,6 @@ export const getOneAgencyById = createAsyncThunk(
   },
 );
 
-// export const fetcAgencies = createAsyncThunk(
-//   'agency/fetcAgencies',
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       const response = await axios.get('/users/non-staff/');
-//       return response.data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
-
 export const fetchAgencies = createAsyncThunk(
   'agencies/fetchAgencies',
   async (_, { rejectWithValue }) => {
