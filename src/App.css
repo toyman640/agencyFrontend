@@ -113,10 +113,6 @@ body {
   color: green !important;
 }
 
-.NoAgency {
-  border: 1px solid red !important;
-}
-
 .ActionButtons {
   display: flex;
   justify-content: space-around;

@@ -67,9 +67,6 @@ const SignUpStaff = () => {
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
             <Button variant="success" type="submit" disabled={loading}>
               {loading ? 'Registering...' : 'Register'}
             </Button>
